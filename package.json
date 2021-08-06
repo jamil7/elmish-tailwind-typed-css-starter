@@ -1,6 +1,7 @@
 {
     "private": true,
     "scripts": {
+        "first-start": "dotnet tool restore && yarn start",
         "start": "dotnet fable watch src -o src/fable --run webpack-dev-server",
         "build": "yarn clean && dotnet fable src -o src/fable --run webpack --node-env production",
         "clean": "rm -rf deploy src/fable"
