@@ -1,6 +1,5 @@
 module.exports = {
-  purge: ['./public/**/*.html', './src/**/*.fs'],
-  darkMode: false, // or 'media' or 'class'
+  content: ['./public/**/*.{html,css,js}', './src/**/*.{fs,js}'],
   theme: {
     extend: {},
   },
@@ -8,4 +7,5 @@ module.exports = {
     extend: {},
   },
   plugins: [],
+  safelist: [{ pattern: /.*/ }],
 }
