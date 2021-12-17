@@ -4,37 +4,36 @@ open Elmish
 open Elmish.React
 open Feliz
 
-type State = { Count: int }
+type Model =
+    {
+        Count: int
+    }
+    static member init() = { Count = 0 }, Cmd.none
 
 type Msg =
     | Increment
     | Decrement
 
-let init () = { Count = 0 }, Cmd.none
-
-let update (msg: Msg) (state: State) : State * Cmd<Msg> =
+let update (msg: Msg) (state: Model) : Model * Cmd<Msg> =
     match msg with
     | Increment -> { state with Count = state.Count + 1 }, Cmd.none
-
     | Decrement -> { state with Count = state.Count - 1 }, Cmd.none
 
 open Zanaptak.TypedCssClasses
 
-type private tw =
-    CssClasses<"../public/style.css", Naming.Verbatim, commandFile="node", argumentPrefix="../tailwind.process.js ../tailwind.config.js"
-    //, logFile = "TypedCssClasses.log" // uncomment to enable logging
-    >
+type private Tw =
+    CssClasses<"../public/style.css", Naming.Underscores, commandFile="node", argumentPrefix="../tailwind.process.js ../tailwind.config.js">
 
-let render (state: State) (dispatch: Msg -> unit) =
+let view (state: Model) (dispatch: Msg -> unit) =
     Html.div [
         Html.button [
-            prop.classes [ tw.``bg-blue-500`` ]
+            prop.classes [ Tw.bg_blue_500 ]
             prop.onClick (fun _ -> dispatch Increment)
             prop.text "Increment"
         ]
 
         Html.button [
-            prop.classes [ tw.``bg-red-500`` ]
+            prop.classes [ Tw.bg_red_500 ]
             prop.onClick (fun _ -> dispatch Decrement)
             prop.text "Decrement"
         ]
@@ -48,12 +47,10 @@ open Elmish.Debug
 open Elmish.HMR
 #endif
 
-Program.mkProgram init update render
+Program.mkProgram Model.init update view
 #if DEBUG
 |> Program.withConsoleTrace
-#endif
-|> Program.withReactSynchronous "app"
-#if DEBUG
 |> Program.withDebugger
 #endif
+|> Program.withReactSynchronous "app"
 |> Program.run
