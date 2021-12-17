@@ -41,5 +41,5 @@ This repo is more or less a port of
 [@zanaptak's](https://github.com/zanaptak)
 Tailwind [sample](https://github.com/zanaptak/TypedCssClasses/tree/main/sample/FableTailwind) (a huge thanks to him!).
 The difference is that this one uses `Elmish` instead of `Feliz` (Feliz is still used as a DSL). This difference meant
-changing the hot module reload extension in Webpack, and going back to use Webpack 4. Which took me a while to figure
+changing the hot module reload extension in Webpack, which took me a while to figure
 out so here we are :D
