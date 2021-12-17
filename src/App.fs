@@ -14,10 +14,10 @@ type Msg =
     | Increment
     | Decrement
 
-let update (msg: Msg) (state: Model) : Model * Cmd<Msg> =
+let update (msg: Msg) (model: Model) : Model * Cmd<Msg> =
     match msg with
-    | Increment -> { state with Count = state.Count + 1 }, Cmd.none
-    | Decrement -> { state with Count = state.Count - 1 }, Cmd.none
+    | Increment -> { model with Count = model.Count + 1 }, Cmd.none
+    | Decrement -> { model with Count = model.Count - 1 }, Cmd.none
 
 open Zanaptak.TypedCssClasses
 
