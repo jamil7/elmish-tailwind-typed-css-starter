@@ -10,7 +10,7 @@ It uses:
 - `Zanaptak.TypedCssClasses` (CSS type provider)
 - `Tailwind CSS`
 - `Prettier`
-- `Webpack 4` (`Webpack 5` doesn't seem compatible with Elmish.HMR)
+- `Webpack 5`
 - `Yarn` (changing to `npm` should be quite easy just replace `yarn` with `npm` in the `package.json` and
   remove `yarn.lock`)
 
